@@ -1,15 +1,12 @@
-import { getLocaleDateFormat } from '@angular/common';
 import { Injectable } from '@angular/core';
+
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Employee } from './employee.model';
-
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class EmployeeService {
   employeeList: AngularFireList<any>;
   selectedEmployee: Employee = new Employee();
-  constructor(private firebase: AngularFireDatabase) {}
+  constructor(public firebase: AngularFireDatabase) {}
 
   getData() {
     this.employeeList = this.firebase.list('employees');
